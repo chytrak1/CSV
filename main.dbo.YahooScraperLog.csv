@@ -1,0 +1,5 @@
+"ID","Severity","ApplicationName","MethodName","Message","RunID","Timestamp"
+"56066","info","YahooScraper","LoadConfiguration","JSON values from C:\Download\\GlobalConfig.json loaded","99045d84-96c5-45bb-8a33-4879d496e259","24.04.2024 17:27:03"
+"56067","info","YahooScraper","Main","Application initialized","99045d84-96c5-45bb-8a33-4879d496e259","24.04.2024 17:27:03"
+"56068","info","YahooScraper","GlobalExportTableAndUploadAsync","Exporting and uploading [main].[dbo].[YahooScraperLog]","99045d84-96c5-45bb-8a33-4879d496e259","24.04.2024 17:27:03"
+"56069","info","YahooScraper","GlobalExportTableToCSV","Exporting [main].[dbo].[YahooScraperLog] to C:\Download\main.dbo.YahooScraperLog.csv","99045d84-96c5-45bb-8a33-4879d496e259","24.04.2024 17:27:03"
