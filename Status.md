@@ -1,6 +1,6 @@
 # Status
 
-Updated: 2026-11-10 19:16:06  
+Updated: 2026-11-10 19:42:52  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
@@ -10,4 +10,4 @@ All finished: no
 | Jabko | Neon | 42 | 42 | 0 | ✅ |
 | Lundhags | Neon | 136 | 136 | 0 | ✅ |
 | Milwaukee | Neon | 239 | 190 | 49 | ⏳ |
-| Manner | SQLite | 209 | 134 | 75 | ⏳ |
+| Manner | SQLite | 209 | 157 | 52 | ⏳ |
