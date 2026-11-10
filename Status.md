@@ -1,13 +1,13 @@
 # Status
 
-Updated: 2026-11-10 13:28:41  
+Updated: 2026-11-10 14:19:06  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
 |---|---|---:|---:|---:|---|
-| Trid | Neon | 45 | 33 | 12 | ⏳ |
-| Svet | Neon | 89 | 65 | 24 | ⏳ |
-| Jabko | Neon | 42 | 26 | 16 | ⏳ |
-| Lundhags | Neon | 136 | 99 | 37 | ⏳ |
-| Milwaukee | Neon | 239 | 72 | 167 | ⏳ |
-| Manner | SQLite | 209 | 78 | 131 | ⏳ |
+| Trid | Neon | 45 | 37 | 8 | ⏳ |
+| Svet | Neon | 89 | 73 | 16 | ⏳ |
+| Jabko | Neon | 42 | 29 | 13 | ⏳ |
+| Lundhags | Neon | 136 | 110 | 26 | ⏳ |
+| Milwaukee | Neon | 239 | 84 | 155 | ⏳ |
+| Manner | SQLite | 209 | 90 | 119 | ⏳ |
