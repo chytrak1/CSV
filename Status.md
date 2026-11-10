@@ -1,6 +1,6 @@
 # Status
 
-Updated: 2026-11-10 19:42:52  
+Updated: 2026-11-10 19:57:51  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
@@ -9,5 +9,5 @@ All finished: no
 | Svet | Neon | 89 | 89 | 0 | ✅ |
 | Jabko | Neon | 42 | 42 | 0 | ✅ |
 | Lundhags | Neon | 136 | 136 | 0 | ✅ |
-| Milwaukee | Neon | 239 | 190 | 49 | ⏳ |
+| Milwaukee | Neon | 239 | 200 | 39 | ⏳ |
 | Manner | SQLite | 209 | 157 | 52 | ⏳ |
