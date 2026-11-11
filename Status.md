@@ -1,6 +1,6 @@
 # Status
 
-Updated: 2026-11-11 20:52:28  
+Updated: 2026-11-11 21:29:07  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
@@ -10,4 +10,4 @@ All finished: no
 | Jabko | Neon | 42 | 42 | 0 | ✅ |
 | Lundh | Neon | 140 | 140 | 0 | ✅ |
 | Manne | SQLite | 175 | 175 | 0 | ✅ |
-| Life4 | SQLite | 58 | 34 | 24 | ⏳ |
+| Life4 | SQLite | 58 | 51 | 7 | ⏳ |
