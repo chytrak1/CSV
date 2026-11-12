@@ -1,14 +1,14 @@
 # Status
 
-Updated: 2026-11-12 12:59:35  
+Updated: 2026-11-12 13:52:30  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
 |---|---|---:|---:|---:|---|
-| Trid | Neon | 45 | 32 | 13 | ⏳ |
-| Svet | Neon | 89 | 64 | 25 | ⏳ |
-| Jabko | Neon | 42 | 19 | 23 | ⏳ |
-| Lundh | Neon | 140 | 94 | 46 | ⏳ |
-| Manne | SQLite | 175 | 87 | 88 | ⏳ |
-| Magnu | SQLite | 39 | 32 | 7 | ⏳ |
-| Life4 | SQLite | 58 | 22 | 36 | ⏳ |
+| Trid | Neon | 45 | 37 | 8 | ⏳ |
+| Svet | Neon | 89 | 74 | 15 | ⏳ |
+| Jabko | Neon | 42 | 23 | 19 | ⏳ |
+| Lundh | Neon | 140 | 109 | 31 | ⏳ |
+| Manne | SQLite | 175 | 101 | 74 | ⏳ |
+| Magnu | SQLite | 39 | 36 | 3 | ⏳ |
+| Life4 | SQLite | 58 | 25 | 33 | ⏳ |
