@@ -1,6 +1,6 @@
 # Status
 
-Updated: 2026-11-15 20:59:16  
+Updated: 2026-11-15 21:08:27  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
@@ -11,5 +11,5 @@ All finished: no
 | I | SQLite | 59 | 48 | 11 | ⏳ |
 | Lanco | SQLite | 95 | 75 | 20 | ⏳ |
 | Magnu | SQLite | 39 | 39 | 0 | ✅ |
-| Alldo | SQLite | 140 | 133 | 7 | ⏳ |
+| Alldo | SQLite | 140 | 140 | 0 | ✅ |
 | Life4 | SQLite | 58 | 48 | 10 | ⏳ |
