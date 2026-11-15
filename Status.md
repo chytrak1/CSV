@@ -1,11 +1,11 @@
 # Status
 
-Updated: 2026-11-15 19:43:21  
+Updated: 2026-11-15 20:03:16  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
 |---|---|---:|---:|---:|---|
-| Trid | Neon | 82 | 72 | 10 | ⏳ |
+| Trid | Neon | 82 | 80 | 2 | ⏳ |
 | Svet | Neon | 89 | 89 | 0 | ✅ |
 | Jabko | Neon | 80 | 80 | 0 | ✅ |
 | I | SQLite | 59 | 48 | 11 | ⏳ |
