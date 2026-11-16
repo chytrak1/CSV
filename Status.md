@@ -1,6 +1,6 @@
 # Status
 
-Updated: 2026-11-16 19:06:55  
+Updated: 2026-11-16 19:25:11  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
@@ -8,7 +8,7 @@ All finished: no
 | Trid | Neon | 82 | 82 | 0 | ✅ |
 | Svet | Neon | 89 | 89 | 0 | ✅ |
 | Jabko | Neon | 80 | 80 | 0 | ✅ |
-| I | SQLite | 59 | 54 | 5 | ⏳ |
+| I | SQLite | 59 | 58 | 1 | ⏳ |
 | Lanco | SQLite | 95 | 95 | 0 | ✅ |
 | Magnu | SQLite | 39 | 39 | 0 | ✅ |
 | Alldo | SQLite | 140 | 140 | 0 | ✅ |
