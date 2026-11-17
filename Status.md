@@ -1,6 +1,6 @@
 # Status
 
-Updated: 2026-11-17 11:03:52  
+Updated: 2026-11-17 11:12:08  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
@@ -13,4 +13,5 @@ All finished: no
 | Kiehl | SQLite | 111 | 17 | 94 | ⏳ |
 | Magnu | SQLite | 39 | 8 | 31 | ⏳ |
 | Alldo | SQLite | 140 | 20 | 120 | ⏳ |
+| Brila | SQLite | 78 | 4 | 74 | ⏳ |
 | Life4 | SQLite | 58 | 15 | 43 | ⏳ |
