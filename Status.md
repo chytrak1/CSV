@@ -1,6 +1,6 @@
 # Status
 
-Updated: 2026-11-17 17:11:43  
+Updated: 2026-11-17 17:15:09  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
@@ -16,4 +16,4 @@ All finished: no
 | Brila | SQLite | 78 | 24 | 54 | ⏳ |
 | Life4 | SQLite | 58 | 34 | 24 | ⏳ |
 | Luxor | SQLite | 263 | 28 | 235 | ⏳ |
-| **Total: 11** | | **1105** | **518** | **587** | **0/11 ✅** |
+| **Total: 11** | **46,9 %** | **1105** | **518** | **587** | **0/11 ✅** |
