@@ -1,7 +1,7 @@
 # Status
 
-Updated: 2026-11-19 23:01:22  
-All finished: no
+Updated: 2026-11-19 23:06:27  
+All finished: yes
 
 | App | Source | Limit | Done | Remaining | State |
 |---|---|---:|---:|---:|---|
@@ -12,8 +12,8 @@ All finished: no
 | Kiehl | SQLite | 105 | 105 | 0 | ✅ |
 | Magnu | SQLite | 38 | 38 | 0 | ✅ |
 | Alldo | SQLite | 128 | 128 | 0 | ✅ |
-| Brila | SQLite | 80 | 78 | 2 | ⏳ |
+| Brila | SQLite | 80 | 80 | 0 | ✅ |
 | Life4 | SQLite | 58 | 58 | 0 | ✅ |
 | Luxor | SQLite | 308 | 308 | 0 | ✅ |
 | Gamer | SQLite | 161 | 161 | 0 | ✅ |
-| **Total: 11** | **99,8 %** | **1188** | **1186** | **2** | **10/11 ✅** |
+| **Total: 11** | **100,0 %** | **1188** | **1188** | **0** | **11/11 ✅** |
