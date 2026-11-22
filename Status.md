@@ -1,20 +1,20 @@
 # Status
 
-Updated: 2026-11-22 16:36:00  
+Updated: 2026-11-22 20:01:44  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
 |---|---|---:|---:|---:|---|
-| Trid | Neon | 78 | 44 | 34 | ⏳ |
-| Jabko | Neon | 75 | 70 | 5 | ⏳ |
-| I | SQLite | 60 | 46 | 14 | ⏳ |
+| Trid | Neon | 78 | 67 | 11 | ⏳ |
+| Jabko | Neon | 75 | 74 | 1 | ⏳ |
+| I | SQLite | 60 | 60 | 0 | ✅ |
 | Lanco | SQLite | 95 | 95 | 0 | ✅ |
-| Kiehl | SQLite | 103 | 99 | 4 | ⏳ |
-| Magnu | SQLite | 38 | 37 | 1 | ⏳ |
-| Alldo | SQLite | 128 | 110 | 18 | ⏳ |
-| Brila | SQLite | 79 | 23 | 56 | ⏳ |
-| Life4 | SQLite | 57 | 33 | 24 | ⏳ |
-| Luxor | SQLite | 325 | 81 | 244 | ⏳ |
-| Gamer | SQLite | 158 | 81 | 77 | ⏳ |
-| Maste | SQLite | 73 | 48 | 25 | ⏳ |
-| **Total: 12** | **60,4 %** | **1269** | **767** | **502** | **1/12 ✅** |
+| Kiehl | SQLite | 103 | 103 | 0 | ✅ |
+| Magnu | SQLite | 38 | 38 | 0 | ✅ |
+| Alldo | SQLite | 128 | 127 | 1 | ⏳ |
+| Brila | SQLite | 79 | 37 | 42 | ⏳ |
+| Life4 | SQLite | 57 | 48 | 9 | ⏳ |
+| Luxor | SQLite | 325 | 129 | 196 | ⏳ |
+| Gamer | SQLite | 158 | 116 | 42 | ⏳ |
+| Maste | SQLite | 73 | 70 | 3 | ⏳ |
+| **Total: 12** | **76,0 %** | **1269** | **964** | **305** | **4/12 ✅** |
