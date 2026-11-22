@@ -1,7 +1,7 @@
 # Status - Server
 
-Updated: 2026-11-22 23:00:24  
-All finished: no
+Updated: 2026-11-22 23:21:29  
+All finished: yes
 
 | App | Source | Limit | Done | Remaining | State |
 |---|---|---:|---:|---:|---|
@@ -13,7 +13,7 @@ All finished: no
 | Alldo | SQLite | 128 | 128 | 0 | ✅ |
 | Brila | SQLite | 79 | 79 | 0 | ✅ |
 | Life4 | SQLite | 57 | 57 | 0 | ✅ |
-| Luxor | SQLite | 325 | 163 | 162 | ⏳ |
-| Gamer | SQLite | 158 | 121 | 37 | ⏳ |
+| Luxor | SQLite | 163 | 163 | 0 | ✅ |
+| Gamer | SQLite | 121 | 121 | 0 | ✅ |
 | Maste | SQLite | 73 | 73 | 0 | ✅ |
-| **Total: 11** | **83,5 %** | **1209** | **1010** | **199** | **9/11 ✅** |
+| **Total: 11** | **100,0 %** | **1010** | **1010** | **0** | **11/11 ✅** |
