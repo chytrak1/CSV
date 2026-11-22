@@ -1,9 +1,9 @@
 # Status - HyperV
 
-Updated: 2026-11-22 21:54:15  
-All finished: yes
+Updated: 2026-11-22 22:25:29  
+All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
 |---|---|---:|---:|---:|---|
-| I | SQLite | 50 | 50 | 0 | ✅ |
-| **Total: 1** | **100,0 %** | **50** | **50** | **0** | **1/1 ✅** |
+| I | SQLite | 300 | 64 | 236 | ⏳ |
+| **Total: 1** | **21,3 %** | **300** | **64** | **236** | **0/1 ✅** |
