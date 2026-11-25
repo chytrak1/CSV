@@ -1,6 +1,6 @@
 # Status - Server
 
-Updated: 2026-11-25 19:51:34  
+Updated: 2026-11-25 20:17:11  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
@@ -11,7 +11,7 @@ All finished: no
 | Magnu | SQLite | 38 | 38 | 0 | ✅ |
 | Alldo | SQLite | 122 | 122 | 0 | ✅ |
 | Life4 | SQLite | 58 | 58 | 0 | ✅ |
-| Total | SQLite | 332 | 237 | 95 | ⏳ |
-| Svet | SQLite | 140 | 18 | 122 | ⏳ |
+| Total | SQLite | 332 | 261 | 71 | ⏳ |
+| Svet | SQLite | 140 | 42 | 98 | ⏳ |
 | Maste | SQLite | 72 | 72 | 0 | ✅ |
-| **Total: 9** | **78,6 %** | **1016** | **799** | **217** | **7/9 ✅** |
+| **Total: 9** | **83,4 %** | **1016** | **847** | **169** | **7/9 ✅** |
