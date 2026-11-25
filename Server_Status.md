@@ -1,6 +1,6 @@
 # Status - Server
 
-Updated: 2026-11-25 22:23:36  
+Updated: 2026-11-25 22:55:52  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
@@ -12,7 +12,7 @@ All finished: no
 | Alldo | SQLite | 122 | 122 | 0 | ✅ |
 | Life4 | SQLite | 58 | 58 | 0 | ✅ |
 | Total | SQLite | 332 | 332 | 0 | ✅ |
-| Svet | SQLite | 140 | 98 | 42 | ⏳ |
-| Gamer | SQLite | 187 | 92 | 95 | ⏳ |
+| Svet | SQLite | 140 | 118 | 22 | ⏳ |
+| Gamer | SQLite | 187 | 121 | 66 | ⏳ |
 | Maste | SQLite | 72 | 72 | 0 | ✅ |
-| **Total: 10** | **88,6 %** | **1203** | **1066** | **137** | **8/10 ✅** |
+| **Total: 10** | **92,7 %** | **1203** | **1115** | **88** | **8/10 ✅** |
