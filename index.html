@@ -1,35 +1,92 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="cs" data-theme="klasik">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Status dashboard</title>
 <style>
-  :root {
+  /* ===== BAREVNÉ VARIANTY =====
+     --s1..--s7 = barvy koláče "Zbývá podle aplikace" (ověřené i pro barvoslepé), --s8 = "Ostatní" */
+  :root, [data-theme="klasik"] {
     --page: #f4f5f7; --surface: #ffffff; --border: #e4e6ea; --grid: #eef0f2;
-    --ink: #191919; --ink-2: #666666; --ink-3: #8a8f98;
+    --ink: #191919; --ink-2: #666666; --ink-3: #8a8f98; --title: var(--ink);
     --done: #257de0; --track: #e3e6ea;
-    --good: #0aac23; --good-bg: #e6f6e9; --good-ink: #006c10;
-    --warn-bg: #fff4dc; --warn-ink: #8a5a00;
-    --shadow: 0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.06);
+    --good: #0aac23; --good-bg: #e6f6e9; --good-ink: #006c10; --warn-bg: #fff4dc; --warn-ink: #8a5a00;
+    --shadow: 0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.06); --glow: none;
     --s1:#257de0; --s2:#f47230; --s3:#00b894; --s4:#f2a600; --s5:#ee7fac; --s6:#008a17; --s7:#6a4ce2; --s8:#9aa0a8;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
+    [data-theme="klasik"] {
       --page: #0b0b0b; --surface: #191919; --border: #2a2a2a; --grid: #262626;
       --ink: #efefef; --ink-2: #9c9c9c; --ink-3: #7a7a7a;
       --done: #338ced; --track: #333638;
-      --good-bg: #12301a; --good-ink: #53c556; --warn-bg: #33270b; --warn-ink: #f2c25a;
-      --shadow: none;
+      --good-bg: #12301a; --good-ink: #53c556; --warn-bg: #33270b; --warn-ink: #f2c25a; --shadow: none;
       --s1:#338ced; --s2:#e76624; --s3:#00a888; --s4:#d28e05; --s5:#e24d8b; --s6:#0aac23; --s7:#9887ef; --s8:#6b6f75;
     }
   }
+  [data-theme="tmava"] {
+    --page: #0d1117; --surface: #161b22; --border: #2a313c; --grid: #1f252e;
+    --ink: #e6edf3; --ink-2: #8d96a0; --ink-3: #6e7681; --title: var(--ink);
+    --done: #338ced; --track: #2a313c;
+    --good: #0aac23; --good-bg: #12301a; --good-ink: #53c556; --warn-bg: #33270b; --warn-ink: #f2c25a;
+    --shadow: none; --glow: none;
+    --s1:#338ced; --s2:#e76624; --s3:#00a888; --s4:#d28e05; --s5:#e24d8b; --s6:#0aac23; --s7:#9887ef; --s8:#5c636c;
+  }
+  [data-theme="cerna-cervena"] {
+    --page: #050505; --surface: #141414; --border: #2a2a2a; --grid: #1e1e1e;
+    --ink: #f2f2f2; --ink-2: #9a9a9a; --ink-3: #6f6f6f; --title: #ff5a5f;
+    --done: #e5383b; --track: #2b2b2b;
+    --good: #0aac23; --good-bg: #2a1213; --good-ink: #ff7b7e; --warn-bg: #2b2b2b; --warn-ink: #d9d9d9;
+    --shadow: none; --glow: 0 0 18px rgba(229,56,59,.35);
+    --s1:#eb6263; --s2:#338ced; --s3:#d28e05; --s4:#00a888; --s5:#9887ef; --s6:#e24d8b; --s7:#0aac23; --s8:#5a5a5a;
+  }
+  [data-theme="zlata"] {
+    --page: #0b0a08; --surface: #16140f; --border: #2e281b; --grid: #1f1c15;
+    --ink: #f3ead6; --ink-2: #a89c80; --ink-3: #7a705a; --title: #e3c25b;
+    --done: #d4af37; --track: #2e2a20;
+    --good: #f5dc85; --good-bg: #2e2712; --good-ink: #e8c862; --warn-bg: #2a261c; --warn-ink: #cdbf9c;
+    --shadow: none; --glow: 0 0 18px rgba(212,175,55,.25);
+    --s1:#b8902a; --s2:#338ced; --s3:#e76624; --s4:#00a888; --s5:#9887ef; --s6:#e24d8b; --s7:#0aac23; --s8:#5b5444;
+  }
+  [data-theme="zlata-svetla"] {
+    --page: #f7f3ea; --surface: #fffdf8; --border: #e8dfcc; --grid: #f2ecdf;
+    --ink: #2b2416; --ink-2: #7a6d55; --ink-3: #a3967c; --title: #8a6508;
+    --done: #b8860b; --track: #ece3cf;
+    --good: #7a5a06; --good-bg: #f6edd5; --good-ink: #7a5a06; --warn-bg: #f1ebdd; --warn-ink: #6d604a;
+    --shadow: 0 1px 3px rgba(80,60,20,.08); --glow: none;
+    --s1:#b8860b; --s2:#257de0; --s3:#f47230; --s4:#00b894; --s5:#008a17; --s6:#ee7fac; --s7:#6a4ce2; --s8:#b5ab98;
+  }
+  [data-theme="les"] {
+    --page: #f1f5f1; --surface: #ffffff; --border: #dde6dd; --grid: #edf2ed;
+    --ink: #17241b; --ink-2: #5c6b60; --ink-3: #8a978d; --title: #0b6b1c;
+    --done: #008a17; --track: #e0e8e0;
+    --good: #008a17; --good-bg: #e3f3e5; --good-ink: #006c10; --warn-bg: #fff4dc; --warn-ink: #8a5a00;
+    --shadow: 0 1px 3px rgba(20,60,30,.07); --glow: none;
+    --s1:#008a17; --s2:#257de0; --s3:#f47230; --s4:#6a4ce2; --s5:#00b894; --s6:#f2a600; --s7:#ee7fac; --s8:#a3ada5;
+  }
+  [data-theme="zapad"] {
+    --page: #fbf5ef; --surface: #ffffff; --border: #f0e2d4; --grid: #f8efe6;
+    --ink: #2a1d14; --ink-2: #7a6557; --ink-3: #a8917f; --title: #c4501c;
+    --done: #f47230; --track: #f3e4d6;
+    --good: #0aac23; --good-bg: #e6f6e9; --good-ink: #006c10; --warn-bg: #fdeadb; --warn-ink: #9a4210;
+    --shadow: 0 1px 3px rgba(120,60,20,.08); --glow: none;
+    --s1:#f47230; --s2:#257de0; --s3:#00b894; --s4:#f2a600; --s5:#ee7fac; --s6:#008a17; --s7:#6a4ce2; --s8:#b9a99b;
+  }
+  [data-theme="pulnoc"] {
+    --page: #0b0918; --surface: #1a1630; --border: #2e2850; --grid: #221d3d;
+    --ink: #ece9ff; --ink-2: #9d97c4; --ink-3: #6f6a96; --title: #b3a6ff;
+    --done: #9887ef; --track: #2c2650;
+    --good: #0aac23; --good-bg: #1d2b33; --good-ink: #5fd48a; --warn-bg: #2c2650; --warn-ink: #d0c9ff;
+    --shadow: none; --glow: 0 0 18px rgba(152,135,239,.3);
+    --s1:#9887ef; --s2:#e76624; --s3:#338ced; --s4:#00a888; --s5:#d28e05; --s6:#e24d8b; --s7:#0aac23; --s8:#57527a;
+  }
   * { box-sizing: border-box; }
-  body { margin: 0; font: 14px/1.45 Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--page); color: var(--ink); }
+  body { margin: 0; transition: background .2s; font: 14px/1.45 Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--page); color: var(--ink); }
   .wrap { max-width: 1500px; margin: 0 auto; padding: 0 28px 40px; }
 
   header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 22px 0 18px; }
-  header h1 { margin: 0; font-size: 22px; letter-spacing: -.01em; }
+  header h1 { margin: 0; font-size: 22px; letter-spacing: -.01em; color: var(--title); }
+  select { font: inherit; font-size: 13px; background: var(--surface); color: var(--ink); border: 1px solid var(--border); border-radius: 8px; padding: 5px 8px; }
   header .sub { color: var(--ink-2); font-size: 13px; display: flex; align-items: center; gap: 10px; }
   .live { width: 8px; height: 8px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 0 rgba(10,172,35,.5); animation: pulse 2s infinite; }
   @keyframes pulse { 70% { box-shadow: 0 0 0 7px rgba(10,172,35,0); } 100% { box-shadow: 0 0 0 0 rgba(10,172,35,0); } }
@@ -48,7 +105,7 @@
   /* File section: charts left, table right */
   .file { margin-bottom: 22px; overflow: hidden; }
   .file-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 16px 22px; border-bottom: 1px solid var(--border); }
-  .file-head h2 { margin: 0; font-size: 18px; }
+  .file-head h2 { margin: 0; font-size: 18px; color: var(--title); }
   .file-head .meta { color: var(--ink-2); font-size: 12.5px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
   .pill { display: inline-flex; align-items: center; gap: 5px; padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
   .pill.yes { background: var(--good-bg); color: var(--good-ink); }
@@ -67,6 +124,11 @@
   th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-2); font-weight: 600; padding: 10px 14px; border-bottom: 1px solid var(--border); }
   td { padding: 8px 14px; border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
   tbody tr:hover td { background: var(--grid); }
+  th.sort { cursor: pointer; user-select: none; white-space: nowrap; }
+  th.sort:hover { color: var(--ink); }
+  th.sort::after { content: "↕"; margin-left: 5px; opacity: .3; font-size: 11px; }
+  th.sort.asc::after { content: "↑"; opacity: 1; color: var(--done); }
+  th.sort.desc::after { content: "↓"; opacity: 1; color: var(--done); }
   .num { text-align: right; }
   td.app { font-weight: 600; }
   tr.complete td { color: var(--ink-2); }
@@ -74,7 +136,7 @@
   tfoot td { font-weight: 700; border-bottom: 0; border-top: 1px solid var(--border); padding-top: 11px; }
   .prog { display: flex; align-items: center; gap: 10px; min-width: 150px; }
   .bar { flex: 1; height: 6px; background: var(--track); border-radius: 3px; overflow: hidden; }
-  .bar > span { display: block; height: 100%; background: var(--done); border-radius: 3px; }
+  .bar > span { display: block; height: 100%; background: var(--done); border-radius: 3px; box-shadow: var(--glow); }
   .bar.full > span { background: var(--good); }
   .prog .p { width: 44px; text-align: right; font-size: 12.5px; color: var(--ink-2); }
 
@@ -101,6 +163,7 @@
   <header>
     <h1>Status dashboard</h1>
     <div class="sub"><span class="live"></span> Načteno <span id="loaded">–</span> · obnova každých <span id="every"></span> s
+      <select id="themeSel" title="Barevná varianta"></select>
       <button onclick="loadAll()">↻ Obnovit</button></div>
   </header>
   <section class="kpis" id="kpis"></section>
@@ -117,6 +180,11 @@ const FILES = [
 ];
 const REFRESH_SECONDS = 60;
 const MAX_SLICES = 7;   // víc aplikací se v koláči sloučí do "Ostatní"
+
+// Barevná varianta: "klasik", "tmava", "cerna-cervena", "zlata", "zlata-svetla", "les", "zapad", "pulnoc"
+const THEME = "klasik";
+// Zobrazit v hlavičce přepínač variant (volba se pamatuje v prohlížeči)? true / false
+const SHOW_THEME_PICKER = true;
 /* =========================== */
 
 const SERIES = ["var(--s1)","var(--s2)","var(--s3)","var(--s4)","var(--s5)","var(--s6)","var(--s7)"];
@@ -205,7 +273,7 @@ function renderFile(name, d) {
   const rem = remainingSegs(d.apps);
   const finishedApps = d.apps.filter(a => a.remaining === 0).length;
 
-  const rows = d.apps.map(a => {
+  const rows = sortedApps(name, d.apps).map(a => {
     const ap = pct(a.done, a.remaining), full = a.remaining === 0;
     return `<tr class="${full ? "complete" : ""}">
       <td class="app">${esc(a.name)}</td><td>${esc(a.source)}</td>
@@ -246,7 +314,7 @@ function renderFile(name, d) {
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>App</th><th>Source</th><th class="num">Limit</th><th class="num">Done</th><th class="num">Remaining</th><th>State</th><th>Progress</th></tr></thead>
+          <thead><tr>${th(name,"app","App")}${th(name,"source","Source")}${th(name,"limit","Limit","num")}${th(name,"done","Done","num")}${th(name,"remaining","Remaining","num")}${th(name,"state","State")}${th(name,"progress","Progress")}</tr></thead>
           <tbody>${rows}</tbody>
           <tfoot>${foot}</tfoot>
         </table>
@@ -272,6 +340,54 @@ function renderKpis(results) {
     <div class="card kpi"><div><div class="label">Dokončené soubory</div><div class="value">${ok.filter(r => isYes(r.data.finished)).length} <small>/ ${results.length}</small></div></div></div>`;
 }
 
+/* ---- barevné varianty ---- */
+const THEMES = { "klasik": "Klasik", "tmava": "Tmavá", "cerna-cervena": "Černá & červená", "zlata": "Zlatá", "zlata-svetla": "Zlatá světlá", "les": "Les", "zapad": "Západ slunce", "pulnoc": "Půlnoc" };
+const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+function applyTheme(t) { document.documentElement.setAttribute("data-theme", THEMES[t] ? t : "klasik"); }
+(function initTheme() {
+  const sel = document.getElementById("themeSel");
+  const urlT = new URLSearchParams(location.search).get("theme");
+  const t = urlT || (SHOW_THEME_PICKER && store.get("theme")) || THEME;
+  applyTheme(t);
+  if (!SHOW_THEME_PICKER) { sel.remove(); return; }
+  sel.innerHTML = Object.entries(THEMES).map(([k, v]) => `<option value="${k}" ${k === t ? "selected" : ""}>🎨 ${v}</option>`).join("");
+  sel.onchange = () => { applyTheme(sel.value); store.set("theme", sel.value); };
+})();
+
+/* ---- řazení tabulek ---- */
+let LAST = [];
+let SORT = {}; try { SORT = JSON.parse(store.get("sort") || "{}"); } catch {}
+const SORT_KEYS = {
+  app: a => a.name.toLowerCase(), source: a => a.source.toLowerCase(), limit: a => a.limit, done: a => a.done,
+  remaining: a => a.remaining, state: a => a.state, progress: a => pct(a.done, a.remaining),
+};
+function sortedApps(file, apps) {
+  const s = SORT[file]; if (!s || !SORT_KEYS[s.key]) return apps;
+  const f = SORT_KEYS[s.key], m = s.dir === "desc" ? -1 : 1;
+  return [...apps].sort((a, b) => { const x = f(a), y = f(b); return (typeof x === "string" ? x.localeCompare(y, "cs") : x - y) * m; });
+}
+function th(file, key, label, cls = "") {
+  const s = SORT[file], dir = s && s.key === key ? s.dir : "";
+  return `<th class="sort ${cls} ${dir}" data-file="${esc(file)}" data-key="${key}">${label}</th>`;
+}
+document.addEventListener("click", e => {
+  const h = e.target.closest("th.sort"); if (!h) return;
+  const file = h.dataset.file, key = h.dataset.key, cur = SORT[file];
+  // klikání: vzestupně → sestupně → původní pořadí (texty začínají A→Z, čísla od největšího)
+  const first = ["app", "source", "state"].includes(key) ? "asc" : "desc", second = first === "asc" ? "desc" : "asc";
+  if (!cur || cur.key !== key) SORT[file] = { key, dir: first };
+  else if (cur.dir === first) SORT[file] = { key, dir: second };
+  else delete SORT[file];
+  store.set("sort", JSON.stringify(SORT));
+  render(LAST);
+});
+
+function render(results) {
+  document.getElementById("kpis").innerHTML = renderKpis(results);
+  document.getElementById("files").innerHTML = results.map(r => r.data ? renderFile(r.name, r.data)
+    : `<section class="card file"><div class="file-head"><h2>${esc(r.name)}</h2></div><p class="error">Nepodařilo se načíst: ${esc(r.error)}</p></section>`).join("");
+}
+
 async function loadAll() {
   const results = await Promise.all(FILES.map(async name => {
     try {
@@ -280,9 +396,8 @@ async function loadAll() {
       return { name, data: parseMd(await r.text()) };
     } catch (e) { return { name, error: e.message }; }
   }));
-  document.getElementById("kpis").innerHTML = renderKpis(results);
-  document.getElementById("files").innerHTML = results.map(r => r.data ? renderFile(r.name, r.data)
-    : `<section class="card file"><div class="file-head"><h2>${esc(r.name)}</h2></div><p class="error">Nepodařilo se načíst: ${esc(r.error)}</p></section>`).join("");
+  LAST = results;
+  render(results);
   document.getElementById("loaded").textContent = new Date().toLocaleTimeString("cs-CZ");
 }
 
