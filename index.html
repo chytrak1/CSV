@@ -6,54 +6,107 @@
 <title>Status dashboard</title>
 <style>
   :root {
-    --bg: #f6f8fa; --card: #fff; --border: #d0d7de; --text: #1f2328; --muted: #656d76;
-    --done: #2da44e; --remain: #d0d7de; --warn: #bf8700;
+    --page: #f4f5f7; --surface: #ffffff; --border: #e4e6ea; --grid: #eef0f2;
+    --ink: #191919; --ink-2: #666666; --ink-3: #8a8f98;
+    --done: #257de0; --track: #e3e6ea;
+    --good: #0aac23; --good-bg: #e6f6e9; --good-ink: #006c10;
+    --warn-bg: #fff4dc; --warn-ink: #8a5a00;
+    --shadow: 0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.06);
+    --s1:#257de0; --s2:#f47230; --s3:#00b894; --s4:#f2a600; --s5:#ee7fac; --s6:#008a17; --s7:#6a4ce2; --s8:#9aa0a8;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#e6edf3; --muted:#8d96a0; --remain:#30363d; }
+    :root {
+      --page: #0b0b0b; --surface: #191919; --border: #2a2a2a; --grid: #262626;
+      --ink: #efefef; --ink-2: #9c9c9c; --ink-3: #7a7a7a;
+      --done: #338ced; --track: #333638;
+      --good-bg: #12301a; --good-ink: #53c556; --warn-bg: #33270b; --warn-ink: #f2c25a;
+      --shadow: none;
+      --s1:#338ced; --s2:#e76624; --s3:#00a888; --s4:#d28e05; --s5:#e24d8b; --s6:#0aac23; --s7:#9887ef; --s8:#6b6f75;
+    }
   }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); }
-  header { padding: 16px 24px; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
-  header h1 { margin: 0; font-size: 22px; }
-  header .meta { color: var(--muted); font-size: 13px; }
-  main { padding: 24px; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); max-width: 1400px; margin: 0 auto; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
-  .card.summary { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; }
-  .card h2 { margin: 0 0 6px; font-size: 20px; }
-  .info { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 600; }
-  .badge.yes { background: #dafbe1; color: #116329; }
-  .badge.no { background: #fff8c5; color: #7d4e00; }
-  .top { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
-  .legend { font-size: 13px; line-height: 1.8; }
-  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th, td { border: 1px solid var(--border); padding: 6px 10px; }
-  th { background: var(--bg); }
-  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-  tr.total td { font-weight: 700; }
-  .bar { height: 8px; background: var(--remain); border-radius: 4px; overflow: hidden; min-width: 80px; }
-  .bar > span { display: block; height: 100%; background: var(--done); }
-  .error { color: #cf222e; }
-  .pie-wrap { position: relative; }
-  .pie-wrap .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
-  .pie-wrap .center b { font-size: 20px; }
-  .pie-wrap .center small { color: var(--muted); font-size: 11px; }
-  .small-pies { display: flex; flex-wrap: wrap; gap: 16px; }
-  .small-pies figure { margin: 0; text-align: center; font-size: 12px; }
-  button { background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; cursor: pointer; }
+  body { margin: 0; font: 14px/1.45 Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--page); color: var(--ink); }
+  .wrap { max-width: 1500px; margin: 0 auto; padding: 0 28px 40px; }
+
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 22px 0 18px; }
+  header h1 { margin: 0; font-size: 22px; letter-spacing: -.01em; }
+  header .sub { color: var(--ink-2); font-size: 13px; display: flex; align-items: center; gap: 10px; }
+  .live { width: 8px; height: 8px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 0 rgba(10,172,35,.5); animation: pulse 2s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 7px rgba(10,172,35,0); } 100% { box-shadow: 0 0 0 0 rgba(10,172,35,0); } }
+  button { font: inherit; font-size: 13px; background: var(--surface); color: var(--ink); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; cursor: pointer; box-shadow: var(--shadow); }
+  button:hover { border-color: var(--ink-3); }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); }
+
+  /* KPI strip */
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-bottom: 22px; }
+  .kpi { padding: 16px 18px; display: flex; align-items: center; gap: 14px; }
+  .kpi .label { color: var(--ink-2); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  .kpi .value { font-size: 26px; font-weight: 650; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .kpi .value small { font-size: 14px; color: var(--ink-2); font-weight: 500; }
+
+  /* File section: charts left, table right */
+  .file { margin-bottom: 22px; overflow: hidden; }
+  .file-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 16px 22px; border-bottom: 1px solid var(--border); }
+  .file-head h2 { margin: 0; font-size: 18px; }
+  .file-head .meta { color: var(--ink-2); font-size: 12.5px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .pill.yes { background: var(--good-bg); color: var(--good-ink); }
+  .pill.no { background: var(--warn-bg); color: var(--warn-ink); }
+  .file-body { display: grid; grid-template-columns: 330px 1fr; align-items: start; }
+  .charts { padding: 20px 22px; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 22px; }
+  .chart-title { font-size: 12px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 10px; }
+  .chart-row { display: flex; align-items: center; gap: 18px; }
+  .legend { font-size: 13px; display: grid; gap: 4px; min-width: 0; }
+  .legend div { display: flex; align-items: center; gap: 7px; white-space: nowrap; }
+  .legend .sw { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .legend .v { color: var(--ink-2); margin-left: auto; padding-left: 10px; font-variant-numeric: tabular-nums; }
+  .table-wrap { padding: 8px 8px 8px 0; overflow-x: auto; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-2); font-weight: 600; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  td { padding: 8px 14px; border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
+  tbody tr:hover td { background: var(--grid); }
+  .num { text-align: right; }
+  td.app { font-weight: 600; }
+  tr.complete td { color: var(--ink-2); }
+  tr.complete td.app { color: var(--ink); }
+  tfoot td { font-weight: 700; border-bottom: 0; border-top: 1px solid var(--border); padding-top: 11px; }
+  .prog { display: flex; align-items: center; gap: 10px; min-width: 150px; }
+  .bar { flex: 1; height: 6px; background: var(--track); border-radius: 3px; overflow: hidden; }
+  .bar > span { display: block; height: 100%; background: var(--done); border-radius: 3px; }
+  .bar.full > span { background: var(--good); }
+  .prog .p { width: 44px; text-align: right; font-size: 12.5px; color: var(--ink-2); }
+
+  .pie { position: relative; flex: none; }
+  .pie svg { display: block; overflow: visible; }
+  .pie path, .pie circle { transition: opacity .15s; cursor: default; }
+  .pie svg:hover path:not(:hover) { opacity: .55; }
+  .pie .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
+  .pie .center b { font-size: 24px; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .pie .center small { color: var(--ink-2); font-size: 11.5px; }
+
+  #tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--surface); font-size: 12.5px; padding: 6px 9px; border-radius: 6px; opacity: 0; transition: opacity .1s; z-index: 10; white-space: nowrap; }
+  .error { color: #d23b3c; padding: 20px 22px; }
+
+  @media (max-width: 900px) {
+    .file-body { grid-template-columns: 1fr; }
+    .charts { border-right: 0; border-bottom: 1px solid var(--border); }
+    .table-wrap { padding: 8px; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1>Status dashboard</h1>
-  <div class="meta">
-    Načteno: <span id="loaded">–</span> · auto-refresh <span id="every"></span> s
-    <button onclick="loadAll()">Obnovit</button>
-  </div>
-</header>
-<main id="main"></main>
+<div class="wrap">
+  <header>
+    <h1>Status dashboard</h1>
+    <div class="sub"><span class="live"></span> Načteno <span id="loaded">–</span> · obnova každých <span id="every"></span> s
+      <button onclick="loadAll()">↻ Obnovit</button></div>
+  </header>
+  <section class="kpis" id="kpis"></section>
+  <div id="files"></div>
+</div>
+<div id="tip"></div>
 
 <script>
 /* ======== NASTAVENÍ ======== */
@@ -63,137 +116,160 @@ const FILES = [
   "HyperV_Status.md",
 ];
 const REFRESH_SECONDS = 60;
+const MAX_SLICES = 7;   // víc aplikací se v koláči sloučí do "Ostatní"
 /* =========================== */
 
-const COLORS = ["#2da44e","#0969da","#8250df","#bf3989","#bc4c00","#1a7f37","#0550ae","#6639ba"];
+const SERIES = ["var(--s1)","var(--s2)","var(--s3)","var(--s4)","var(--s5)","var(--s6)","var(--s7)"];
+const OTHER = "var(--s8)";
 document.getElementById("every").textContent = REFRESH_SECONDS;
 
-const num = s => {
-  const n = parseFloat(String(s).replace(/\*/g,"").replace(/\s/g,"").replace(",", "."));
-  return isNaN(n) ? 0 : n;
-};
-const clean = s => String(s).replace(/\*\*/g, "").trim();
+const num = s => { const n = parseFloat(String(s ?? "").replace(/\*/g,"").replace(/\s/g,"").replace(",", ".")); return isNaN(n) ? 0 : n; };
+const clean = s => String(s ?? "").replace(/\*\*/g, "").trim();
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = n => n.toLocaleString("cs-CZ");
+const pct = (d, r) => (d + r) ? d / (d + r) * 100 : 0;
+const fmtPct = p => p.toFixed(1).replace(".", ",") + " %";
+const isYes = s => /^(yes|ano|true)$/i.test(s || "");
 
 function parseMd(text) {
   const lines = text.split(/\r?\n/);
   const res = { title: "", updated: "", finished: "", headers: [], rows: [], total: null };
   for (const l of lines) {
-    const t = l.trim();
+    const t = l.trim(); let m;
     if (!res.title && t.startsWith("# ")) res.title = t.slice(2).trim();
-    let m;
     if ((m = t.match(/^Updated:\s*(.+)$/i))) res.updated = m[1].trim();
     if ((m = t.match(/^All finished:\s*(.+)$/i))) res.finished = m[1].trim();
   }
   const tbl = lines.map(l => l.trim()).filter(l => l.startsWith("|"));
   const cells = l => l.replace(/^\||\|$/g, "").split("|").map(c => c.trim());
   if (tbl.length) {
-    res.headers = cells(tbl[0]);
+    res.headers = cells(tbl[0]).map(clean);
     for (const l of tbl.slice(1)) {
-      if (/^\|?\s*:?-{2,}/.test(l)) continue;           // oddělovač |---|
+      if (/^\|?\s*:?-{2,}/.test(l)) continue;
       const c = cells(l);
       if (/^\*\*total/i.test(c[0])) res.total = c; else res.rows.push(c);
     }
   }
-  // Indexy sloupců podle názvu hlavičky (pořadí se může změnit)
-  const idx = name => res.headers.findIndex(h => h.toLowerCase() === name);
-  const iApp = Math.max(0, idx("app")), iDone = idx("done"), iRem = idx("remaining"), iLim = idx("limit");
+  const idx = n => res.headers.findIndex(h => h.toLowerCase() === n);
+  res.col = { app: Math.max(0, idx("app")), source: idx("source"), limit: idx("limit"), done: idx("done"), remaining: idx("remaining"), state: idx("state") };
   res.apps = res.rows.map(r => ({
-    name: clean(r[iApp]),
-    done: num(r[iDone]),
-    remaining: num(r[iRem]),
-    limit: iLim >= 0 ? num(r[iLim]) : num(r[iDone]) + num(r[iRem]),
+    name: clean(r[res.col.app]),
+    source: res.col.source >= 0 ? clean(r[res.col.source]) : "",
+    state: res.col.state >= 0 ? clean(r[res.col.state]) : "",
+    done: num(r[res.col.done]),
+    remaining: num(r[res.col.remaining]),
+    limit: res.col.limit >= 0 ? num(r[res.col.limit]) : num(r[res.col.done]) + num(r[res.col.remaining]),
   }));
   res.done = res.apps.reduce((a, b) => a + b.done, 0);
   res.remaining = res.apps.reduce((a, b) => a + b.remaining, 0);
   return res;
 }
 
-// SVG koláč/donut
-function pie(segments, size = 160, hole = 0.6, centerHtml = "") {
-  const total = segments.reduce((a, s) => a + s.value, 0) || 1;
-  const r = size / 2, ri = r * hole;
-  let a0 = -Math.PI / 2, paths = "";
+/* ---- SVG donut ---- */
+function donut(segments, size, hole, centerHtml = "") {
+  const total = segments.reduce((a, s) => a + s.value, 0);
+  const r = size / 2, ri = r * hole, gap = segments.filter(s => s.value > 0).length > 1 ? 0.012 : 0;
   const pt = (rad, a) => [r + rad * Math.cos(a), r + rad * Math.sin(a)];
+  let a0 = -Math.PI / 2, out = "";
+  if (!total) out = `<circle cx="${r}" cy="${r}" r="${(r+ri)/2}" fill="none" stroke="var(--track)" stroke-width="${r-ri}"/>`;
   for (const s of segments) {
     if (s.value <= 0) continue;
-    const frac = s.value / total;
-    if (frac >= 0.9999) {
-      paths += `<circle cx="${r}" cy="${r}" r="${(r + ri) / 2}" fill="none" stroke="${s.color}" stroke-width="${r - ri}"><title>${esc(s.label)}: ${s.value}</title></circle>`;
+    const frac = s.value / total, tip = `${esc(s.label)}: <b>${fmt(s.value)}</b> (${fmtPct(frac * 100)})`;
+    if (frac > 0.9999) {
+      out += `<circle cx="${r}" cy="${r}" r="${(r+ri)/2}" fill="none" stroke="${s.color}" stroke-width="${r-ri}" data-tip="${esc(tip)}"/>`;
       break;
     }
-    const a1 = a0 + frac * 2 * Math.PI, large = frac > 0.5 ? 1 : 0;
-    const [x0, y0] = pt(r, a0), [x1, y1] = pt(r, a1), [x2, y2] = pt(ri, a1), [x3, y3] = pt(ri, a0);
-    const d = ri > 0
-      ? `M${x0},${y0} A${r},${r} 0 ${large} 1 ${x1},${y1} L${x2},${y2} A${ri},${ri} 0 ${large} 0 ${x3},${y3} Z`
-      : `M${r},${r} L${x0},${y0} A${r},${r} 0 ${large} 1 ${x1},${y1} Z`;
-    paths += `<path d="${d}" fill="${s.color}" stroke="var(--card)" stroke-width="1"><title>${esc(s.label)}: ${s.value} (${(frac*100).toFixed(1)} %)</title></path>`;
+    const a1 = a0 + frac * 2 * Math.PI, s0 = a0 + gap, s1 = Math.max(s0 + 0.001, a1 - gap), large = (s1 - s0) > Math.PI ? 1 : 0;
+    const [x0,y0] = pt(r, s0), [x1,y1] = pt(r, s1), [x2,y2] = pt(ri, s1), [x3,y3] = pt(ri, s0);
+    out += `<path d="M${x0},${y0} A${r},${r} 0 ${large} 1 ${x1},${y1} L${x2},${y2} A${ri},${ri} 0 ${large} 0 ${x3},${y3} Z" fill="${s.color}" data-tip="${esc(tip)}"/>`;
     a0 = a1;
   }
-  return `<div class="pie-wrap" style="width:${size}px;height:${size}px">
-    <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">${paths}</svg>
-    <div class="center">${centerHtml}</div></div>`;
+  return `<div class="pie" style="width:${size}px;height:${size}px"><svg width="${size}" height="${size}">${out}</svg><div class="center">${centerHtml}</div></div>`;
 }
 
-const pct = (d, r) => (d + r) ? (d / (d + r) * 100) : 0;
-const fmtPct = p => p.toFixed(1).replace(".", ",") + " %";
+function legend(segs) {
+  return `<div class="legend">${segs.map(s => `<div><span class="sw" style="background:${s.color}"></span>${esc(s.label)}<span class="v">${fmt(s.value)}</span></div>`).join("")}</div>`;
+}
+
+// Zbývající práce podle aplikace: největší první, zbytek -> "Ostatní"
+function remainingSegs(apps) {
+  const rest = apps.filter(a => a.remaining > 0).sort((a, b) => b.remaining - a.remaining);
+  const top = rest.slice(0, MAX_SLICES).map((a, i) => ({ label: a.name, value: a.remaining, color: SERIES[i] }));
+  const other = rest.slice(MAX_SLICES).reduce((s, a) => s + a.remaining, 0);
+  if (other) top.push({ label: `Ostatní (${rest.length - MAX_SLICES})`, value: other, color: OTHER });
+  return top;
+}
 
 function renderFile(name, d) {
   const p = pct(d.done, d.remaining);
-  const appSegs = d.apps.map((a, i) => ({ label: a.name, value: a.done, color: COLORS[i % COLORS.length] }));
-  const isDone = /^(yes|ano|true)$/i.test(d.finished);
+  const rem = remainingSegs(d.apps);
+  const finishedApps = d.apps.filter(a => a.remaining === 0).length;
 
-  const rowsHtml = d.rows.map((r, ri) => {
-    const a = d.apps[ri], ap = pct(a.done, a.remaining);
-    return `<tr>${r.map((c, i) => `<td class="${i >= 2 && i <= 4 ? "num" : ""}">${esc(clean(c))}</td>`).join("")}
-      <td><div class="bar" title="${fmtPct(ap)}"><span style="width:${ap}%"></span></div></td></tr>`;
+  const rows = d.apps.map(a => {
+    const ap = pct(a.done, a.remaining), full = a.remaining === 0;
+    return `<tr class="${full ? "complete" : ""}">
+      <td class="app">${esc(a.name)}</td><td>${esc(a.source)}</td>
+      <td class="num">${fmt(a.limit)}</td><td class="num">${fmt(a.done)}</td><td class="num">${fmt(a.remaining)}</td>
+      <td>${esc(a.state)}</td>
+      <td><div class="prog"><div class="bar ${full ? "full" : ""}"><span style="width:${ap}%"></span></div><span class="p">${Math.floor(ap)} %</span></div></td></tr>`;
   }).join("");
-  const totalHtml = d.total ? `<tr class="total">${d.total.map((c, i) => `<td class="${i >= 2 && i <= 4 ? "num" : ""}">${esc(clean(c))}</td>`).join("")}
-      <td><div class="bar"><span style="width:${p}%"></span></div></td></tr>` : "";
+  const t = d.total ? d.total.map(clean) : null;
+  const foot = `<tr><td>${t ? esc(t[d.col.app]) : "Total"}</td><td></td>
+      <td class="num">${fmt(d.apps.reduce((s, a) => s + a.limit, 0))}</td><td class="num">${fmt(d.done)}</td><td class="num">${fmt(d.remaining)}</td>
+      <td>${t && d.col.state >= 0 ? esc(t[d.col.state]) : ""}</td>
+      <td><div class="prog"><div class="bar"><span style="width:${p}%"></span></div><span class="p">${fmtPct(p)}</span></div></td></tr>`;
 
-  const smallPies = d.apps.map(a => `<figure>${pie([
-      { label: "Done", value: a.done, color: "var(--done)" },
-      { label: "Remaining", value: a.remaining, color: "var(--remain)" }],
-      80, 0.6, `<b style="font-size:12px">${Math.round(pct(a.done, a.remaining))}%</b>`)}
-      <figcaption>${esc(a.name)}</figcaption></figure>`).join("");
-
-  return `<section class="card">
-    <h2>${esc(d.title || name)}</h2>
-    <div class="info">Updated: ${esc(d.updated)} · All finished:
-      <span class="badge ${isDone ? "yes" : "no"}">${esc(d.finished || "?")}</span> · <code>${esc(name)}</code></div>
-    <div class="top">
-      ${pie([{ label: "Done", value: d.done, color: "var(--done)" },
-             { label: "Remaining", value: d.remaining, color: "var(--remain)" }], 150, 0.62,
-            `<b>${fmtPct(p)}</b><small>${d.done} / ${d.done + d.remaining}</small>`)}
-      ${d.apps.length > 1 ? pie(appSegs, 150, 0, "") : ""}
-      ${d.apps.length > 1 ? `<div class="legend"><div style="color:var(--muted)">Done podle App</div>${appSegs.map(s =>
-        `<div><span class="dot" style="background:${s.color}"></span>${esc(s.label)}: ${s.value}</div>`).join("")}</div>` : ""}
+  return `<section class="card file">
+    <div class="file-head">
+      <h2>${esc(d.title || name)}</h2>
+      <div class="meta">
+        <span>Aktualizováno ${esc(d.updated || "?")}</span>
+        <span class="pill ${isYes(d.finished) ? "yes" : "no"}">${isYes(d.finished) ? "✓ Hotovo" : "⏳ Běží"}</span>
+        <span>${finishedApps}/${d.apps.length} aplikací dokončeno</span>
+      </div>
     </div>
-    <div class="small-pies" style="margin-bottom:14px">${smallPies}</div>
-    <table>
-      <thead><tr>${d.headers.map((h, i) => `<th class="${i >= 2 && i <= 4 ? "num" : ""}">${esc(h)}</th>`).join("")}<th>Progress</th></tr></thead>
-      <tbody>${rowsHtml}${totalHtml}</tbody>
-    </table>
+    <div class="file-body">
+      <div class="charts">
+        <div>
+          <div class="chart-title">Průběh</div>
+          <div class="chart-row">
+            ${donut([{ label: "Hotovo", value: d.done, color: "var(--done)" }, { label: "Zbývá", value: d.remaining, color: "var(--track)" }], 150, 0.72,
+              `<b>${fmtPct(p)}</b><small>${fmt(d.done)} / ${fmt(d.done + d.remaining)}</small>`)}
+            ${legend([{ label: "Hotovo", value: d.done, color: "var(--done)" }, { label: "Zbývá", value: d.remaining, color: "var(--track)" }])}
+          </div>
+        </div>
+        <div>
+          <div class="chart-title">Zbývá podle aplikace</div>
+          ${rem.length ? `<div class="chart-row">${donut(rem, 120, 0.58, `<b style="font-size:17px">${fmt(d.remaining)}</b><small>zbývá</small>`)}${legend(rem)}</div>`
+                       : `<div style="color:var(--good-ink);font-weight:600">✓ Vše dokončeno</div>`}
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>App</th><th>Source</th><th class="num">Limit</th><th class="num">Done</th><th class="num">Remaining</th><th>State</th><th>Progress</th></tr></thead>
+          <tbody>${rows}</tbody>
+          <tfoot>${foot}</tfoot>
+        </table>
+      </div>
+    </div>
   </section>`;
 }
 
-function renderSummary(results) {
+function renderKpis(results) {
   const ok = results.filter(r => r.data);
   const done = ok.reduce((a, r) => a + r.data.done, 0);
   const rem = ok.reduce((a, r) => a + r.data.remaining, 0);
-  const segs = ok.map((r, i) => ({ label: r.data.title || r.name, value: r.data.done, color: COLORS[i % COLORS.length] }));
-  return `<section class="card summary">
-    ${pie([{ label: "Done", value: done, color: "var(--done)" }, { label: "Remaining", value: rem, color: "var(--remain)" }],
-          170, 0.62, `<b>${fmtPct(pct(done, rem))}</b><small>celkem</small>`)}
-    <div class="legend" style="font-size:15px">
-      <div><b>Celkem hotovo:</b> ${done} / ${done + rem}</div>
-      <div><b>Zbývá:</b> ${rem}</div>
-      <div><b>Hotových souborů:</b> ${ok.filter(r => /^(yes|ano|true)$/i.test(r.data.finished)).length} / ${ok.length}</div>
+  const apps = ok.flatMap(r => r.data.apps);
+  const p = pct(done, rem);
+  return `
+    <div class="card kpi">
+      ${donut([{ label: "Hotovo", value: done, color: "var(--done)" }, { label: "Zbývá", value: rem, color: "var(--track)" }], 58, 0.68, "")}
+      <div><div class="label">Celkem hotovo</div><div class="value">${fmtPct(p)}</div></div>
     </div>
-    ${segs.length > 1 ? pie(segs, 140, 0, "") : ""}
-    ${segs.length > 1 ? `<div class="legend"><div style="color:var(--muted)">Done podle souboru</div>${segs.map(s =>
-      `<div><span class="dot" style="background:${s.color}"></span>${esc(s.label)}: ${s.value}</div>`).join("")}</div>` : ""}
-  </section>`;
+    <div class="card kpi"><div><div class="label">Hotovo</div><div class="value">${fmt(done)} <small>/ ${fmt(done + rem)}</small></div></div></div>
+    <div class="card kpi"><div><div class="label">Zbývá</div><div class="value">${fmt(rem)}</div></div></div>
+    <div class="card kpi"><div><div class="label">Dokončené aplikace</div><div class="value">${apps.filter(a => a.remaining === 0).length} <small>/ ${apps.length}</small></div></div></div>
+    <div class="card kpi"><div><div class="label">Dokončené soubory</div><div class="value">${ok.filter(r => isYes(r.data.finished)).length} <small>/ ${results.length}</small></div></div></div>`;
 }
 
 async function loadAll() {
@@ -204,12 +280,22 @@ async function loadAll() {
       return { name, data: parseMd(await r.text()) };
     } catch (e) { return { name, error: e.message }; }
   }));
-  document.getElementById("main").innerHTML =
-    renderSummary(results) +
-    results.map(r => r.data ? renderFile(r.name, r.data)
-      : `<section class="card"><h2>${esc(r.name)}</h2><p class="error">Nepodařilo se načíst: ${esc(r.error)}</p></section>`).join("");
-  document.getElementById("loaded").textContent = new Date().toLocaleString("cs-CZ");
+  document.getElementById("kpis").innerHTML = renderKpis(results);
+  document.getElementById("files").innerHTML = results.map(r => r.data ? renderFile(r.name, r.data)
+    : `<section class="card file"><div class="file-head"><h2>${esc(r.name)}</h2></div><p class="error">Nepodařilo se načíst: ${esc(r.error)}</p></section>`).join("");
+  document.getElementById("loaded").textContent = new Date().toLocaleTimeString("cs-CZ");
 }
+
+/* tooltip pro grafy */
+const tip = document.getElementById("tip");
+document.addEventListener("mousemove", e => {
+  const el = e.target.closest("[data-tip]");
+  if (!el) { tip.style.opacity = 0; return; }
+  tip.innerHTML = el.getAttribute("data-tip");
+  tip.style.left = (e.clientX + 14) + "px";
+  tip.style.top = (e.clientY + 14) + "px";
+  tip.style.opacity = 1;
+});
 
 loadAll();
 setInterval(loadAll, REFRESH_SECONDS * 1000);
