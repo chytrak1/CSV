@@ -1,18 +1,18 @@
 # Status - Server
 
-Updated: 2026-11-27 08:38:16  
-All finished: yes
+Updated: 2026-11-27 08:40:27  
+All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
 |---|---|---:|---:|---:|---|
-| Trid | Neon | 80 | 80 | 0 | ✅ |
-| Jabko | Neon | 77 | 77 | 0 | ✅ |
-| Kiehl | SQLite | 105 | 105 | 0 | ✅ |
-| Magnu | SQLite | 38 | 38 | 0 | ✅ |
-| Alldo | SQLite | 128 | 128 | 0 | ✅ |
-| Life4 | SQLite | 57 | 57 | 0 | ✅ |
-| Total | SQLite | 331 | 331 | 0 | ✅ |
-| Svet | SQLite | 140 | 140 | 0 | ✅ |
-| Gamer | SQLite | 186 | 186 | 0 | ✅ |
-| Maste | SQLite | 72 | 72 | 0 | ✅ |
-| **Total: 10** | **100,0 %** | **1214** | **1214** | **0** | **10/10 ✅** |
+| Trid | Neon | 80 | 11 | 69 | ⏳ |
+| Jabko | Neon | 77 | 25 | 52 | ⏳ |
+| Kiehl | SQLite | 105 | 17 | 88 | ⏳ |
+| Magnu | SQLite | 38 | 12 | 26 | ⏳ |
+| Alldo | SQLite | 128 | 36 | 92 | ⏳ |
+| Life4 | SQLite | 57 | 22 | 35 | ⏳ |
+| Total | SQLite | 331 | 9 | 322 | ⏳ |
+| Svet | SQLite | 140 | 0 | 140 | ⏳ |
+| Gamer | SQLite | 186 | 0 | 186 | ⏳ |
+| Maste | SQLite | 72 | 0 | 72 | ⏳ |
+| **Total: 10** | **10,9 %** | **1214** | **132** | **1082** | **0/10 ✅** |
