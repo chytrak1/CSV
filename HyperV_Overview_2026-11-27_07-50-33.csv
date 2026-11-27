@@ -1,0 +1,4 @@
+App;Source;DailyLimit;Done;Remaining;OK
+I;SQLite;500;500;0;True
+Lanco;SQLite;500;499;1;True
+Hisen;SQLite;300;35;265;True
