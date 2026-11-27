@@ -1,11 +1,11 @@
 # Status - HyperV
 
-Updated: 2026-11-27 11:07:46  
+Updated: 2026-11-27 11:54:07  
 All finished: no
 
 | App | Source | Limit | Done | Remaining | State |
 |---|---|---:|---:|---:|---|
-| I | SQLite | 500 | 60 | 440 | ⏳ |
-| Lanco | SQLite | 500 | 8 | 492 | ⏳ |
-| Hisen | SQLite | 300 | 44 | 256 | ⏳ |
-| **Total: 3** | **8,6 %** | **1300** | **112** | **1188** | **0/3 ✅** |
+| I | SQLite | 500 | 79 | 421 | ⏳ |
+| Lanco | SQLite | 500 | 20 | 480 | ⏳ |
+| Hisen | SQLite | 300 | 46 | 254 | ⏳ |
+| **Total: 3** | **11,2 %** | **1300** | **145** | **1155** | **0/3 ✅** |
